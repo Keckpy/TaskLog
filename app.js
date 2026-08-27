@@ -1,4 +1,5 @@
 // ##### SETUP #####
+require('dotenv').config();
 
 // Express
 const express = require('express');
@@ -12,6 +13,7 @@ const PORT = process.env.PORT || 3000;
 
 // MySQL
 const db = require('./database/db-connector.js');
+
 
 // Handlebars
 const { engine } = require('express-handlebars');
