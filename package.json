@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "start": "node app.js",
     "dev": "nodemon --ignore database/ca.pem app.js"
   },
   "keywords": [],
