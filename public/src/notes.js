@@ -9,9 +9,12 @@ addItemBtn.addEventListener('click', (e) => {
 })
 
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'a') {
-        formDisplay.classList.toggle('hidden');
-        e.preventDefault();
-        addInput.focus();
+    if (formDisplay.classList.contains('hidden')) {
+        if (e.key === 'a') {
+            formDisplay.classList.toggle('hidden');
+            e.preventDefault();
+            addInput.focus();
+        }
     }
+    
 })

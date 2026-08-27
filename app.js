@@ -47,7 +47,7 @@ app.get('/log', async (req, res) => {
 
 app.get('/notes', async (req, res) => {
     try {
-        const query1 = `SELECT noteID, notes, DATE_FORMAT(dateCreated, '%m-%d-%Y') AS dateCreated 
+        const query1 = `SELECT noteID, notes, DATE_FORMAT(dateCreated, '%c/%d/%Y') AS dateCreated 
                         FROM Notes`;
 
         const [notes] = await db.query(query1);
