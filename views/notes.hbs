@@ -16,8 +16,6 @@
             <button class="dataBtn">Add</button>
         </form>
     </div>
-    
-    
 
     <section class="notes-display">
         <table>
@@ -26,19 +24,44 @@
                 <th>Notes</th>
                 <th>Created At</th>
                 <th></th>
+                <th></th>
             </thead>
             <tbody>
                 {{#each notes}}
-                <tr>
+                {{#if priority}}
+                <tr class="priority-row">
                     <td>{{noteID}}</td>
-                    <td>{{notes}}</td>
+                    <td contenteditable="true" spellcheck="false">{{notes}}</td>
                     <td>{{dateCreated}}</td>
+                    <td>
+                        <form action="/notes/priority/{{noteID}}" method="POST">
+                            <button class="priorityBtn">★</button>
+                        </form>
+                    </td>
                     <td>
                         <form action="/notes/delete/{{noteID}}" method="POST">
                             <button class="deleteBtn">&times;</button>
                         </form>
                     </td>
                 </tr>
+                {{else}}
+                <tr>
+                    <td>{{noteID}}</td>
+                    <td contenteditable="true" spellcheck="false">{{notes}}</td>
+                    <td>{{dateCreated}}</td>
+                    <td>
+                        <form action="/notes/priority/{{noteID}}" method="POST">
+                            <button class="priorityBtn">☆</button>
+                            
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/notes/delete/{{noteID}}" method="POST">
+                            <button class="deleteBtn">&times;</button>
+                        </form>
+                    </td>
+                </tr>
+                {{/if}}
                 {{/each}}
             </tbody>
         </table>

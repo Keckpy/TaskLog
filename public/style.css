@@ -72,6 +72,22 @@ body {
     background-color: #c63946;
 }
 
+.priorityBtn {
+    color: #333333;
+    border: none;
+    background-color: #e6394700;
+    border-radius: 4px;
+    font-weight: 900;
+    padding: 5px;
+    padding-inline: 8px;
+    font-size: 1.2rem;
+}
+
+.priorityBtn:hover {
+    cursor: pointer;
+    background-color: #c6394700;
+}
+
 .add-form {
     margin-block-start: 20px;
     border: 1px solid #3d8a38;
@@ -81,13 +97,13 @@ body {
 }
 
 table {
-    margin-block-start: 20px;
     border-collapse: collapse;
     width: 600px;
     background-color: #f9f9f9;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     border-radius: 6px;
     overflow: hidden;
+    margin-block-start: 20px;
 }
 
 th {
@@ -118,3 +134,12 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
+.priority-row {
+    background-color: #d9f7ea !important;
+}
+
+.last-priority-row {
+    border-block-end: 1px solid #333333;
+}
+

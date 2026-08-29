@@ -47,13 +47,15 @@ app.get('/log', async (req, res) => {
 
 app.get('/notes', async (req, res) => {
     try {
-        const query1 = `SELECT noteID, notes, DATE_FORMAT(dateCreated, '%c/%d/%Y') AS dateCreated 
-                        FROM Notes`;
+        const query1 = `SELECT noteID, notes, DATE_FORMAT(dateCreated, '%c/%d/%Y') AS dateCreated, priority
+                        FROM Notes
+                        ORDER BY priority DESC, noteID DESC
+                        `;
 
         const [notes] = await db.query(query1);
-        
+
         res.render('notes', {
-            notes: notes
+            notes: notes,
         }) 
     } catch (error) {
         console.log(error);
@@ -80,7 +82,7 @@ app.post('/add-note', async (req, res) => {
 app.post('/notes/delete/:id', async (req, res) => {
     try {
         const noteID = req.params.id;
-        console.log('button pressed', noteID);
+        console.log('delete button pressed', noteID);
         const query1 = `DELETE FROM Notes
                         WHERE noteID = ?`;
 
@@ -91,8 +93,37 @@ app.post('/notes/delete/:id', async (req, res) => {
         console.log(error);
         res.status(500).send('Deletion failed')
     }
+})
 
-    
+app.post('/notes/priority/:id', async (req, res) => {
+    try {
+        const noteID = req.params.id;
+        console.log('priority button pressed', noteID);
+        grabQuery = `SELECT priority
+                    FROM Notes
+                    WHERE noteID = ?`;
+
+        query1 = `UPDATE Notes
+                SET priority = TRUE
+                WHERE noteID = ?`;
+
+        query2 = `UPDATE Notes
+                SET priority = FALSE
+                WHERE noteID = ?`;
+        const result = await db.query(grabQuery, [noteID]);
+        const data = result[0][0]?.priority
+        if (!data) {
+            await db.query(query1, [noteID]);
+        } else {
+            await db.query(query2, [noteID]);
+        }
+        
+
+        res.redirect('/notes');
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Priority failed')
+    }
 })
 
 // ##### START SERVER #####
