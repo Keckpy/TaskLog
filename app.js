@@ -47,8 +47,10 @@ app.get('/log', async (req, res) => {
 
 app.get('/notes', async (req, res) => {
     try {
-        const query1 = `SELECT noteID, notes, DATE_FORMAT(dateCreated, '%c/%d/%Y') AS dateCreated, priority
+        const query1 = `SELECT noteID, notes, DATE_FORMAT(dateCreated, '%c/%d/%Y') AS dateCreated, priority,
+                        DATE_FORMAT(dateCreated, '%c/%d/%Y') AS dateCompleted
                         FROM Notes
+                        WHERE dateCompleted IS NULL
                         ORDER BY priority DESC, noteID DESC
                         `;
 
@@ -60,6 +62,25 @@ app.get('/notes', async (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(500).send('Database failed')
+    }
+})
+
+app.get('/history', async (req, res) => {
+    try {
+        const query1 = `SELECT noteID, notes, DATE_FORMAT(dateCompleted, '%c/%d/%Y') AS dateCompleted
+                        FROM Notes
+                        WHERE dateCompleted
+                        ORDER BY Notes.dateCompleted DESC
+                        `;
+
+        const [history] = await db.query(query1);
+
+        res.render('history', {
+            history: history,
+        }) 
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('History failed')
     }
 })
 
@@ -88,10 +109,27 @@ app.post('/notes/delete/:id', async (req, res) => {
 
         await db.query(query1, [noteID]);
 
-        res.redirect('/notes');
+        res.redirect('/history');
     } catch (error) {
         console.log(error);
         res.status(500).send('Deletion failed')
+    }
+})
+
+app.post('/notes/complete/:id', async (req, res) => {
+    try {
+        const noteID = req.params.id;
+        console.log('complete button pressed', noteID);
+        const query1 = `UPDATE Notes
+                        SET dateCompleted = CURRENT_TIMESTAMP
+                        WHERE noteID = ?`;
+        
+        await db.query(query1, [noteID]);
+
+        res.redirect('/notes');
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Completion failed')
     }
 })
 

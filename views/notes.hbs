@@ -6,9 +6,16 @@
     <title>Notes</title>
 </head>
 <body>
+    <div class="historyBtn">
+        <a href="/history"><p>Show History <span class="key" >h</span></p></a>
+    </div>
+
+    
     <div class="dataBtn">
         <p>Add Item <span class="key">a</span></p>
     </div>
+    
+    
     
     <div class="add-form hidden">
         <form action="/add-note" method="POST">
@@ -35,12 +42,12 @@
                     <td>{{dateCreated}}</td>
                     <td>
                         <form action="/notes/priority/{{noteID}}" method="POST">
-                            <button class="priorityBtn">★</button>
+                            <button class="unpriorityBtn"></button>
                         </form>
                     </td>
                     <td>
-                        <form action="/notes/delete/{{noteID}}" method="POST">
-                            <button class="deleteBtn">&times;</button>
+                        <form action="/notes/complete/{{noteID}}" method="POST">
+                            <button class="completeBtn"></button>
                         </form>
                     </td>
                 </tr>
@@ -51,13 +58,13 @@
                     <td>{{dateCreated}}</td>
                     <td>
                         <form action="/notes/priority/{{noteID}}" method="POST">
-                            <button class="priorityBtn">☆</button>
+                            <button class="priorityBtn"></button>
                             
                         </form>
                     </td>
                     <td>
-                        <form action="/notes/delete/{{noteID}}" method="POST">
-                            <button class="deleteBtn">&times;</button>
+                        <form action="/notes/complete/{{noteID}}" method="POST">
+                            <button class="completeBtn"></button>
                         </form>
                     </td>
                 </tr>

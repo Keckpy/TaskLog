@@ -12,6 +12,7 @@ body {
     background-color: #f9f9f9;
     color: #f9f9f9;
     margin-block: 30px;
+    position: relative;
 }
 
 .center {
@@ -57,19 +58,37 @@ body {
     background-color: #2eaf76;
 }
 
-.deleteBtn {
-    color: #f9f9f9;
+.historyBtn {
+    color: inherit;
     border: none;
-    background-color: #e63946;
-    border-radius: 4px;
+    background-color: #3ecf8e;
+    border-radius: 5px;
+    padding: 10px;
     font-weight: 900;
-    padding: 5px;
-    padding-inline: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: background-color 0.2 ease;
+    position: absolute;
+    top: 0px;
+    right: 30px;
 }
 
-.deleteBtn:hover {
+.historyBtn:hover {
     cursor: pointer;
-    background-color: #c63946;
+    background-color: #2eaf76;
+}
+
+.deleteBtn {
+    color: #333333;
+    border: none;
+    background-color: transparent;
+    border-radius: 4px;
+    padding: 5px;
+    padding-inline: 8px;
+    cursor: pointer;
+}
+
+.deleteBtn:hover svg {
+    stroke-width: 2.5;
 }
 
 .priorityBtn {
@@ -81,11 +100,61 @@ body {
     padding: 5px;
     padding-inline: 8px;
     font-size: 1.2rem;
+    cursor: pointer;
 }
 
-.priorityBtn:hover {
+.priorityBtn::before {
+    content: '☆';
+}
+
+.priorityBtn:hover::before {
+    content: '★';
+}
+
+.unpriorityBtn {
+    color: #333333;
+    border: none;
+    background-color: #e6394700;
+    border-radius: 4px;
+    font-weight: 900;
+    padding: 5px;
+    padding-inline: 8px;
+    font-size: 1.2rem;
     cursor: pointer;
-    background-color: #c6394700;
+}
+
+.unpriorityBtn::before {
+    content: '★';
+}
+
+.unpriorityBtn:hover::before {
+    content: '☆';
+}
+
+.completeBtn {
+    color: #333333;
+    border: none;
+    background-color: #e6394700;
+    border-radius: 4px;
+    font-weight: 900;
+    padding: 5px;
+    padding-inline: 8px;
+    font-size: 1.2rem;
+    cursor: pointer;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;  /* Keeps the horizontal space identical */
+    height: 2rem; /* Keeps the vertical space identical */
+}
+
+.completeBtn::before {
+    content: '☐';
+}
+
+.completeBtn:hover::before {
+    content: '🗹';
 }
 
 .add-form {
