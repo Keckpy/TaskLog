@@ -88,7 +88,6 @@ app.get('/history', async (req, res) => {
                 foundDate.rows.push(row);
             }
         }
-        console.log(JSON.stringify(groupDates, null, 2));
         res.render('history', {
             groupDates: groupDates
         }) 
