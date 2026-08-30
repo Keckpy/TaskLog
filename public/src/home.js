@@ -6,7 +6,6 @@
 
 // getDataBtn.addEventListener('click', (e) => {
 //     e.preventDefault();
-//     fetch('/log');
 //     notesDisplay.classList.toggle('hidden');
 //     getDataBtn.classList.toggle('hidden');
 //     addItemBtn.classList.toggle('hidden');
@@ -14,6 +13,5 @@
 
 // addItemBtn.addEventListener('click', (e) => {
 //     e.preventDefault();
-//     fetch('/log');
 //     formDisplay.classList.toggle('hidden');
 // })

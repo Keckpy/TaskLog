@@ -17,6 +17,7 @@ const db = require('./database/db-connector.js');
 
 // Handlebars
 const { engine } = require('express-handlebars');
+const { setSourceMapsSupport } = require('node:module');
 
 app.engine('.hbs', engine({ extname: '.hbs'}));
 
@@ -33,11 +34,18 @@ app.get('/', async (req, res) => {
     }
     
 })
-// cron-job.org uses this endpoint to keep the render instance running **DO NOT DELETE**
+// cron-job.org uses this endpoint to keep the render and aiven instances running **DO NOT DELETE**
 app.get('/log', async (req, res) => {
     try {
-        console.log('button clicked');
-        res.sendStatus(200);
+        const query1 = `SELECT Count(*) AS count FROM Notes`;
+        
+        const [[tableLen]] = await db.query(query1);
+        console.log(tableLen.count);
+        res.send({
+            Status: 'Success',
+            Table: 'Notes',
+            Length: tableLen.count
+        });
     } catch (error) {
         console.log(error);
         res.status(500).send('Log failed');

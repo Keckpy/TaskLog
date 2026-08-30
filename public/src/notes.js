@@ -5,7 +5,6 @@ const addInput = document.getElementById('add-note');
 
 addItemBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    fetch('/log');
     formDisplay.classList.toggle('hidden');
 })
 
