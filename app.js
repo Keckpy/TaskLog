@@ -33,7 +33,7 @@ app.get('/', async (req, res) => {
     }
     
 })
-
+// cron-job.org uses this endpoint to keep the render instance running **DO NOT DELETE**
 app.get('/log', async (req, res) => {
     try {
         console.log('button clicked');
@@ -74,9 +74,23 @@ app.get('/history', async (req, res) => {
                         `;
 
         const [history] = await db.query(query1);
-
+        const groupDates = []
+        for (const row of history) {
+            const foundDate = groupDates.find(item => {
+                return item.date === row.dateCompleted
+            })
+            if (!foundDate) {
+                groupDates.push({
+                    date: row.dateCompleted,
+                    rows: [row]
+                })
+            } else {
+                foundDate.rows.push(row);
+            }
+        }
+        console.log(JSON.stringify(groupDates, null, 2));
         res.render('history', {
-            history: history,
+            groupDates: groupDates
         }) 
     } catch (error) {
         console.log(error);
