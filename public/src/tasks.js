@@ -192,28 +192,18 @@ document.addEventListener('keydown', (e) => {
             e.preventDefault();
             const id = e.target.dataset.id;
             const value = e.target.textContent;
-            try {
-                const response = await fetch('/update-task', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        id: id,
-                        value: value
-                    })
-                });
-
-                if (!response.ok) {
-                    throw new Error(`Update failed: ${response.status}`);
-                }
-
-                e.target.blur();
-
-            } catch (error) {
-                console.error('Failed to update task:', error);
-            }
-    }
+            fetch('/update-task', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: id,
+                    value: value
+                })
+            });
+            e.target.blur();
+        }
     }
 
 })
