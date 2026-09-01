@@ -43,6 +43,18 @@ document.addEventListener('keydown', (e) => {
     if (e.target.tagName === 'TD') {
         if (e.key === 'Enter') {
             e.preventDefault();
+            const id = e.target.dataset.id;
+            const value = e.target.textContent;
+            fetch('/update-note', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: id,
+                    value: value
+                })
+            });
             e.target.blur();
         }
     }

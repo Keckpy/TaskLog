@@ -137,6 +137,21 @@ app.post('/add-note', async (req, res) => {
     }
 })
 
+app.post('/update-note', async (req, res) => {
+    try {
+        const { id, value } = req.body;
+        const query1 = `UPDATE Notes
+                        SET notes = ?
+                        WHERE noteID = ?`;
+        
+        await db.query(query1, [value, id]);
+        res.redirect('/notes');
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Add-note Failed');
+    }
+})
+
 app.post('/add-task', async (req, res) => {
     try {
         const query1 = `INSERT INTO Tasks (task)

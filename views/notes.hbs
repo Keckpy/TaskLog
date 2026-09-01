@@ -41,7 +41,7 @@
                 {{#if priority}}
                 <tr class="priority-row">
                     <td>{{noteID}}</td>
-                    <td contenteditable="true" spellcheck="false">{{notes}}</td>
+                    <td contenteditable="true" spellcheck="false" data-id="{{noteID}}">{{notes}}</td>
                     <td>{{dateCreated}}</td>
                     <td>
                         <form action="/notes/priority/{{noteID}}" method="POST">
