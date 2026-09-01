@@ -57,7 +57,7 @@
                 {{else}}
                 <tr>
                     <td>{{noteID}}</td>
-                    <td contenteditable="true" spellcheck="false" class="max-width">{{notes}}</td>
+                    <td contenteditable="true" spellcheck="false" data-id="{{noteID}} class="max-width">{{notes}}</td>
                     <td>{{dateCreated}}</td>
                     <td>
                         <form action="/notes/priority/{{noteID}}" method="POST">
