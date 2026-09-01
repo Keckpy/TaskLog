@@ -91,9 +91,7 @@ document.addEventListener('keydown', (e) => {
     }
 
     // Press 'c' when on page
-    if (e.target.tagName === 'BODY' &&
-        centaurForm.classList.contains('hidden')
-    ) {
+    if (e.target.tagName === 'BODY') {
         if (e.key === 'c') {
             centaurForm.classList.toggle('hidden');
             e.preventDefault();
@@ -115,9 +113,7 @@ document.addEventListener('keydown', (e) => {
     }
 
     // Press 'u' when on page
-    if (e.target.tagName === 'BODY' &&
-        urinesForm.classList.contains('hidden')
-    ) {
+    if (e.target.tagName === 'BODY') {
         if (e.key === 'u') {
             urinesForm.classList.toggle('hidden');
             e.preventDefault();
@@ -138,9 +134,7 @@ document.addEventListener('keydown', (e) => {
     }
 
     // Press 'a' when on page
-    if (e.target.tagName === 'BODY' &&
-        ancillaryForm.classList.contains('hidden')
-    ) {
+    if (e.target.tagName === 'BODY') {
         if (e.key === 'a') {
             ancillaryForm.classList.toggle('hidden');
             e.preventDefault();
@@ -161,9 +155,7 @@ document.addEventListener('keydown', (e) => {
     }
 
     // Press 'r' when on page
-    if (e.target.tagName === 'BODY' &&
-        remisolForm.classList.contains('hidden')
-    ) {
+    if (e.target.tagName === 'BODY') {
         if (e.key === 'r') {
             remisolForm.classList.toggle('hidden');
             e.preventDefault();
