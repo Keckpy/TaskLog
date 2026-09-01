@@ -164,7 +164,22 @@ app.post('/add-task', async (req, res) => {
         res.redirect('/tasks');
     } catch (error) {
         console.log(error);
-        res.status(500).send('Add-task Failed');
+        res.status(500).send('Update-task Failed');
+    }
+})
+
+app.post('/update-task', async (req, res) => {
+    try {
+        const { id, value } = req.body;
+        const query1 = `UPDATE Tasks
+                        SET task = ?
+                        WHERE taskID = ?`;
+        
+        await db.query(query1, [value, id]);
+        res.redirect('/tasks');
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Update-task Failed');
     }
 })
 

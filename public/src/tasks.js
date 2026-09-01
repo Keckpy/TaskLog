@@ -8,6 +8,10 @@ const urinesForm = document.getElementById('urines-bench');
 const ancillaryForm = document.getElementById('ancillary');
 const remisolForm = document.getElementById('remisol');
 
+const addTaskInput = document.getElementById('add-task');
+
+
+
 centaurBtn.addEventListener('click', (e) => {
     centaurForm.classList.toggle('hidden');
     e.preventDefault();
@@ -176,6 +180,37 @@ document.addEventListener('keydown', (e) => {
                 ancillaryForm.classList.toggle('hidden');
                 e.preventDefault();
             }
+        }
+    }
+
+    // Focus task input with 't'
+    if (e.target.tagName === 'BODY' && e.key === 't') {
+        e.preventDefault();
+        addTaskInput.focus();
+    }
+
+    // Blur task input with 'Escape'
+    if (e.target.tagName === 'INPUT' && e.key === 'Escape') {
+        addTaskInput.blur();
+    }
+
+    // Press 'Enter' when inside a cell
+    if (e.target.tagName === 'TD') {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            const id = e.target.dataset.id;
+            const value = e.target.textContent;
+            fetch('/update-task', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: id,
+                    value: value
+                })
+            });
+            e.target.blur();
         }
     }
 

@@ -236,8 +236,22 @@ td {
     color: #333333;
 }
 
+.max-width {
+    width: 100%;
+}
+
 td, th {
     text-align: center;
+}
+
+td:focus {
+    outline: 2px solid #006eff;
+    outline-offset: -2px;
+}
+
+td input[type=checkbox] {
+    width: 18px;
+    height: 18px;
 }
 
 tbody tr:nth-child(even) {

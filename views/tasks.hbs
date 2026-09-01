@@ -135,7 +135,7 @@
     
     <div class="add-form">
         <form action="/add-task" method="POST">
-            <input type="text" name="add-task" id="add-task" placeholder="Add Task">
+            <input type="text" name="add-task" id="add-task" placeholder="Add Task [t]">
             <button class="dataBtn">Add</button>
         </form>
     </div>
@@ -150,7 +150,7 @@
                 {{#each tasks}}
                 <tr>
                     <td><input type="checkbox"></td>
-                    <td>{{task}}</td>
+                    <td contenteditable="true" spellcheck="false" data-id="{{taskID}}" class="max-width">{{task}}</td>
                     <td>
                         <form action="/tasks/delete/{{taskID}}" method="POST">
                             <button class="deleteBtn">
