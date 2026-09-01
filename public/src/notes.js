@@ -1,5 +1,6 @@
 const addItemBtn = document.querySelector('.dataBtn');
 const historyBtn = document.querySelector('.historyBtn');
+const tasksBtn = document.querySelector('.tasksBtn');
 const formDisplay = document.querySelector('.add-form');
 const addInput = document.getElementById('add-note');
 
@@ -13,6 +14,11 @@ document.addEventListener('keydown', (e) => {
     // Press 'h' when on page
     if (e.target.tagName === 'BODY' && e.key === 'h') {
         window.location.href = '/history';
+    }
+
+    // Press 't' when on page
+    if (e.target.tagName === 'BODY' && e.key === 't') {
+        window.location.href = '/tasks';
     }
 
     // Press 'a' when on page

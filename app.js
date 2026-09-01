@@ -105,6 +105,22 @@ app.get('/history', async (req, res) => {
     }
 })
 
+app.get('/tasks', async (req, res) => {
+    try {
+        const query1 = `SELECT * FROM Tasks
+                        ORDER BY taskID Desc`;
+
+        const [tasks] = await db.query(query1);
+
+        res.render('tasks', {
+            tasks: tasks
+        }) 
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Tasks failed')
+    }
+})
+
 app.post('/add-note', async (req, res) => {
     try {
         const query1 = `INSERT INTO Notes (notes)
@@ -121,6 +137,22 @@ app.post('/add-note', async (req, res) => {
     }
 })
 
+app.post('/add-task', async (req, res) => {
+    try {
+        const query1 = `INSERT INTO Tasks (task)
+                        VALUES (?)`;
+
+        const text = req.body['add-task'];
+
+        await db.query(query1, [text]);
+
+        res.redirect('/tasks');
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Add-task Failed');
+    }
+})
+
 app.post('/notes/delete/:id', async (req, res) => {
     try {
         const noteID = req.params.id;
@@ -131,6 +163,21 @@ app.post('/notes/delete/:id', async (req, res) => {
         await db.query(query1, [noteID]);
 
         res.redirect('/history');
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Deletion failed')
+    }
+})
+app.post('/tasks/delete/:id', async (req, res) => {
+    try {
+        const taskID = req.params.id;
+        console.log('delete button pressed', taskID);
+        const query1 = `DELETE FROM Tasks
+                        WHERE taskID = ?`;
+
+        await db.query(query1, [taskID]);
+
+        res.redirect('/tasks');
     } catch (error) {
         console.log(error);
         res.status(500).send('Deletion failed')

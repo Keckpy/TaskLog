@@ -13,3 +13,7 @@ CREATE TABLE Notes (
     dateCompleted DATETIME
 );
 
+CREATE TABLE Tasks (
+    taskID INT AUTO_INCREMENT PRIMARY KEY,
+    tasks TEXT NOT NULL
+);
