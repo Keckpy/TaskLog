@@ -178,6 +178,15 @@ body {
     content: '🗹';
 }
 
+.completeBtn.checked::before {
+    content: '🗹';
+}
+
+.completed {
+    text-decoration: line-through;
+    text-decoration-thickness: 2px;
+}
+
 .add-form {
     margin-block-start: 20px;
     border: 1px solid #3d8a38;

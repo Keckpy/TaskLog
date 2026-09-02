@@ -28,6 +28,10 @@
         <h1>Centaur</h1>
         <div class="tasks-list">
             <div class="task">
+                <input type="checkbox" name="daily-report" id="rodi">
+                <label for="rodi">RODI</label>
+            </div>
+            <div class="task">
                 <input type="checkbox" name="daily-report" id="daily-report">
                 <label for="daily-report">Daily Report</label>
             </div>
@@ -56,6 +60,10 @@
     <form action="" class="add-form hidden" id="urines-bench">
         <h1>Urines Bench</h1>
         <div class="tasks-list">
+            <div class="task">
+                <input type="checkbox" name="daily-report" id="rodi">
+                <label for="rodi">RODI</label>
+            </div>
             <div class="task">
                 <input type="checkbox" name="daily-report" id="dxi2">
                 <label for="dxi2">DXI 2 Setup</label>
@@ -86,6 +94,10 @@
         <h1>Ancillary</h1>
         <div class="tasks-list">
             <div class="task">
+                <input type="checkbox" name="daily-report" id="rodi">
+                <label for="rodi">RODI</label>
+            </div>
+            <div class="task">
                 <input type="checkbox" name="daily-report" id="ana">
                 <label for="ana">ANA</label>
             </div>
@@ -114,6 +126,10 @@
     <form action="" class="add-form hidden" id="remisol">
         <h1>Remisol</h1>
         <div class="tasks-list">
+            <div class="task">
+                <input type="checkbox" name="daily-report" id="rodi">
+                <label for="rodi">RODI</label>
+            </div>
             <div class="task">
                 <input type="checkbox" name="daily-report" id="dxi2">
                 <label for="dxi2">DXI 2 Setup</label>
@@ -149,7 +165,9 @@
             <tbody>
                 {{#each tasks}}
                 <tr>
-                    <td><input type="checkbox"></td>
+                    <td>
+                        <button class="completeBtn" id="visual" data-id="{{taskID}}"></button>
+                    </td>
                     <td contenteditable="true" spellcheck="false" data-id="{{taskID}}" class="max-width">{{task}}</td>
                     <td>
                         <form action="/tasks/delete/{{taskID}}" method="POST">

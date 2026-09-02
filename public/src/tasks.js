@@ -10,6 +10,16 @@ const remisolForm = document.getElementById('remisol');
 
 const addTaskInput = document.getElementById('add-task');
 
+const taskCheck = document.getElementById('visual');
+
+taskCheck.addEventListener('click', (e) => {
+    taskCheck.classList.toggle('checked');
+    const id = e.target.dataset.id;
+    const task = document.querySelector(`td[data-id="${id}"]`);
+
+    task.classList.toggle('completed');
+})
+
 
 
 centaurBtn.addEventListener('click', (e) => {
