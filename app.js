@@ -55,7 +55,8 @@ app.get('/log', async (req, res) => {
 
 app.get('/notes', async (req, res) => {
     try {
-        const query1 = `SELECT noteID, notes, DATE_FORMAT(dateCreated, '%c/%d/%Y') AS dateCreated, priority,
+        const query1 = `SELECT noteID, notes, DATE_FORMAT(dateCreated, '%Y-%m-%d') AS dateCreated,
+                        DATE_FORMAT(dateCreated, '%c/%d/%Y') AS dateCreatedFormatted, priority,
                         DATE_FORMAT(dateCreated, '%c/%d/%Y') AS dateCompleted
                         FROM Notes
                         WHERE dateCompleted IS NULL
@@ -118,6 +119,16 @@ app.get('/tasks', async (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(500).send('Tasks failed')
+    }
+})
+
+app.get('/test', async (req, res) => {
+    try {
+
+        res.render('test') 
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Test failed')
     }
 })
 

@@ -9,7 +9,6 @@
     <section class="notes">
         <table>
             <thead>
-                <th>ID</th>
                 <th>Notes</th>
                 <th></th>
             </thead>
@@ -20,7 +19,6 @@
                 </tr>
                     {{#each rows}}
                     <tr>
-                        <td>{{noteID}}</td>
                         <td>{{notes}}</td>
                         <td>
                             <form action="/notes/delete/{{noteID}}" method="POST">

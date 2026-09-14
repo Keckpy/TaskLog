@@ -25,44 +25,49 @@
             <section class="notes-display">
                 <table>
                     <thead>
-                        <th>ID</th>
-                        <th>Notes</th>
-                        <th>Created At</th>
                         <th></th>
+                        <th>Notes</th>
+                        <th>Age</th>
                         <th></th>
                     </thead>
                     <tbody>
                         {{#each notes}}
                         {{#if priority}}
                         <tr class="priority-row">
-                            <td>{{noteID}}</td>
+                            <td>
+                                <form action="/notes/complete/{{noteID}}" method="POST">
+                                    <button class="completeBtn"></button>
+                                </form>
+                            </td>
                             <td contenteditable="true" spellcheck="false" data-id="{{noteID}}" class="max-width">{{notes}}</td>
-                            <td>{{dateCreated}}</td>
+                            <td class="dateVisual">
+                                <div class="container" data-date="{{dateCreated}}">
+                                    {{!-- Simulate time here --}}
+                                </div>
+                            </td>
                             <td>
                                 <form action="/notes/priority/{{noteID}}" method="POST">
                                     <button class="unpriorityBtn"></button>
                                 </form>
                             </td>
+                        </tr>
+                        {{else}}
+                        <tr>
                             <td>
                                 <form action="/notes/complete/{{noteID}}" method="POST">
                                     <button class="completeBtn"></button>
                                 </form>
                             </td>
-                        </tr>
-                        {{else}}
-                        <tr>
-                            <td>{{noteID}}</td>
                             <td contenteditable="true" spellcheck="false" data-id="{{noteID}}" class="max-width">{{notes}}</td>
-                            <td>{{dateCreated}}</td>
+                            <td class="dateVisual">
+                                <div class="container" data-date="{{dateCreated}}">
+                                    {{!-- Simulate time here --}}
+                                </div>
+                            </td>
                             <td>
                                 <form action="/notes/priority/{{noteID}}" method="POST">
                                     <button class="priorityBtn"></button>
                                     
-                                </form>
-                            </td>
-                            <td>
-                                <form action="/notes/complete/{{noteID}}" method="POST">
-                                    <button class="completeBtn"></button>
                                 </form>
                             </td>
                         </tr>

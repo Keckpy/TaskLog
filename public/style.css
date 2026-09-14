@@ -333,3 +333,55 @@ h2 {
 .active {
     background-color: #2eaf76;
 }
+/* Max Age is 38 days 5 bars + 3 squares */
+.container {
+    width: 50px;
+    height: 25px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    
+}
+
+
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: inherit;
+    color: #333;
+}
+
+.block {
+    background-color: #111;
+    border: 1px solid #f9f9f9;
+}
+
+.bottom {
+    background-color: #111;
+    border-inline: 1px solid #f9f9f9;
+    border-block-end: 1px solid #f9f9f9;
+}
+
+.middle {
+    background-color: #111;
+    border-inline: 1px solid #f9f9f9;
+}
+
+.top {
+    background-color: #111;
+    border-inline: 1px solid #f9f9f9;
+    border-block-start: 1px solid #f9f9f9;
+}
+.btn {
+    background-color: #3ecf8e;
+    margin-block-end: 30px;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #2eaf76;
+}
+
