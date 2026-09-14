@@ -95,9 +95,14 @@ remisolBtn.addEventListener('click', (e) => {
 })
 
 document.addEventListener('keydown', (e) => {
-    // Press 'b' when on page
-    if (e.target.tagName === 'BODY' && e.key === 'b') {
+    // Press 'n' when on page
+    if (e.target.tagName === 'BODY' && e.key === 'n') {
         window.location.href = '/notes';
+    }
+
+    // Press 'h' when on page
+    if (e.target.tagName === 'BODY' && e.key === 'h') {
+        window.location.href = '/history';
     }
 
     // Press 'c' when on page

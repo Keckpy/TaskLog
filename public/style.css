@@ -11,8 +11,6 @@ body {
     font-family: sans-serif;
     background-color: #f9f9f9;
     color: #f9f9f9;
-    margin-block: 30px;
-    position: relative;
 }
 
 .center {
@@ -23,11 +21,11 @@ body {
     height: 100vh;
 }
 .page-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 30px;
+    margin-inline-end: 30px;
+    min-height: 100vh;
 }
 
 .key {
@@ -39,7 +37,6 @@ body {
     font-size: .9rem;
     color: #f9f9f9;
     border: 1px solid #91dec1;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
 }
 
 .dataBtn {
@@ -51,6 +48,7 @@ body {
     font-weight: 900;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: background-color 0.2 ease;
+    width: fit-content;
 }
 
 .dataBtn:hover {
@@ -62,14 +60,9 @@ body {
     color: inherit;
     border: none;
     background-color: #3ecf8e;
-    border-radius: 5px;
     padding: 10px;
     font-weight: 900;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: background-color 0.2 ease;
-    position: absolute;
-    top: 0px;
-    right: 30px;
 }
 
 .historyBtn:hover {
@@ -81,19 +74,40 @@ body {
     color: inherit;
     border: none;
     background-color: #3ecf8e;
-    border-radius: 5px;
     padding: 10px;
     font-weight: 900;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: background-color 0.2 ease;
-    position: absolute;
-    top: 50px;
-    right: 30px;
-    width: 170px;
-    text-align: right;
 }
 
 .tasksBtn:hover {
+    cursor: pointer;
+    background-color: #2eaf76;
+}
+
+.scheduleBtn {
+    color: inherit;
+    border: none;
+    background-color: #3ecf8e;
+    padding: 10px;
+    font-weight: 900;
+    transition: background-color 0.2 ease;
+}
+
+.scheduleBtn:hover {
+    cursor: pointer;
+    background-color: #2eaf76;
+}
+
+.notesBtn {
+    color: inherit;
+    border: none;
+    background-color: #3ecf8e;
+    padding: 10px;
+    font-weight: 900;
+    transition: background-color 0.2 ease;
+}
+
+.notesBtn:hover {
     cursor: pointer;
     background-color: #2eaf76;
 }
@@ -193,6 +207,7 @@ body {
     border-radius: 10px;
     padding: 10px;
     font-weight: 500;
+    width: fit-content;
 }
 
 .tasks-list {
@@ -225,7 +240,6 @@ h1 {
 
 table {
     border-collapse: collapse;
-    width: 600px;
     background-color: #f9f9f9;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     border-radius: 6px;
@@ -249,8 +263,12 @@ td {
     width: 100%;
 }
 
-td, th {
+th {
     text-align: center;
+}
+
+td {
+    text-align: left;
 }
 
 td:focus {
@@ -286,4 +304,31 @@ a {
 
 .date-row {
     background-color: #d9f7ea;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #3ecf8e;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding-block-start: 10px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    align-self: start;
+}
+
+.notes {
+    margin-block: 30px;
+}
+
+h2 {
+    font-size: 1.9rem;
+    padding-inline-start: 20px;
+    padding-block-end: 20px;
+}
+
+.active {
+    background-color: #2eaf76;
 }

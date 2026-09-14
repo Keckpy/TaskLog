@@ -6,76 +6,80 @@
     <title>Notes</title>
 </head>
 <body>
+    
+        
+        <section class="notes">
+            <div class="dataBtn">
+                <p>Add Item <span class="key">a</span></p>
+            </div>
+            
+            
+            
+            <div class="add-form hidden">
+                <form action="/add-note" method="POST">
+                    <input type="text" name="add-note" id="add-note" placeholder="Add Note">
+                    <button class="dataBtn">Add</button>
+                </form>
+            </div>
+
+            <section class="notes-display">
+                <table>
+                    <thead>
+                        <th>ID</th>
+                        <th>Notes</th>
+                        <th>Created At</th>
+                        <th></th>
+                        <th></th>
+                    </thead>
+                    <tbody>
+                        {{#each notes}}
+                        {{#if priority}}
+                        <tr class="priority-row">
+                            <td>{{noteID}}</td>
+                            <td contenteditable="true" spellcheck="false" data-id="{{noteID}}" class="max-width">{{notes}}</td>
+                            <td>{{dateCreated}}</td>
+                            <td>
+                                <form action="/notes/priority/{{noteID}}" method="POST">
+                                    <button class="unpriorityBtn"></button>
+                                </form>
+                            </td>
+                            <td>
+                                <form action="/notes/complete/{{noteID}}" method="POST">
+                                    <button class="completeBtn"></button>
+                                </form>
+                            </td>
+                        </tr>
+                        {{else}}
+                        <tr>
+                            <td>{{noteID}}</td>
+                            <td contenteditable="true" spellcheck="false" data-id="{{noteID}}" class="max-width">{{notes}}</td>
+                            <td>{{dateCreated}}</td>
+                            <td>
+                                <form action="/notes/priority/{{noteID}}" method="POST">
+                                    <button class="priorityBtn"></button>
+                                    
+                                </form>
+                            </td>
+                            <td>
+                                <form action="/notes/complete/{{noteID}}" method="POST">
+                                    <button class="completeBtn"></button>
+                                </form>
+                            </td>
+                        </tr>
+                        {{/if}}
+                        {{/each}}
+                    </tbody>
+                </table>
+            </section>
+        </section>
+    {{!-- <div class="scheduleBtn">
+    </div>
     <div class="historyBtn">
-        <a href="/history"><p>Show History <span class="key" >h</span></p></a>
     </div>
     <div class="tasksBtn">
-        <a href="/tasks"><p>Show Tasks <span class="key" >t</span></p></a>
-    </div>
+    </div> --}}
 
     
-    <div class="dataBtn">
-        <p>Add Item <span class="key">a</span></p>
-    </div>
-    
-    
-    
-    <div class="add-form hidden">
-        <form action="/add-note" method="POST">
-            <input type="text" name="add-note" id="add-note" placeholder="Add Note">
-            <button class="dataBtn">Add</button>
-        </form>
-    </div>
-
-    <section class="notes-display">
-        <table>
-            <thead>
-                <th>ID</th>
-                <th>Notes</th>
-                <th>Created At</th>
-                <th></th>
-                <th></th>
-            </thead>
-            <tbody>
-                {{#each notes}}
-                {{#if priority}}
-                <tr class="priority-row">
-                    <td>{{noteID}}</td>
-                    <td contenteditable="true" spellcheck="false" data-id="{{noteID}}" class="max-width">{{notes}}</td>
-                    <td>{{dateCreated}}</td>
-                    <td>
-                        <form action="/notes/priority/{{noteID}}" method="POST">
-                            <button class="unpriorityBtn"></button>
-                        </form>
-                    </td>
-                    <td>
-                        <form action="/notes/complete/{{noteID}}" method="POST">
-                            <button class="completeBtn"></button>
-                        </form>
-                    </td>
-                </tr>
-                {{else}}
-                <tr>
-                    <td>{{noteID}}</td>
-                    <td contenteditable="true" spellcheck="false" data-id="{{noteID}} class="max-width">{{notes}}</td>
-                    <td>{{dateCreated}}</td>
-                    <td>
-                        <form action="/notes/priority/{{noteID}}" method="POST">
-                            <button class="priorityBtn"></button>
-                            
-                        </form>
-                    </td>
-                    <td>
-                        <form action="/notes/complete/{{noteID}}" method="POST">
-                            <button class="completeBtn"></button>
-                        </form>
-                    </td>
-                </tr>
-                {{/if}}
-                {{/each}}
-            </tbody>
-        </table>
-    </section>
 </body>
 </html>
 
