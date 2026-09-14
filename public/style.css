@@ -325,9 +325,9 @@ a {
 }
 
 h2 {
-    font-size: 1.9rem;
-    padding-inline-start: 20px;
-    padding-block-end: 20px;
+    font-size: 1.5rem;
+    padding-inline-start: 30px;
+    padding-block: 10px;
 }
 
 .active {
