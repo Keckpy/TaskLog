@@ -84,7 +84,7 @@ addItemBtn.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
     // Press 'n' when on page
     if (e.target.tagName === 'BODY' && e.key === 'n') {
-        window.location.href = '/notes';
+        window.location.href = '/';
     }
 
     // Press 'h' when on page

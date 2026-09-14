@@ -24,16 +24,6 @@ app.engine('.hbs', engine({ extname: '.hbs'}));
 app.set('view engine', '.hbs');
 
 // ##### ROUTES #####
-
-app.get('/', async (req, res) => {
-    try {
-        res.render('home');
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Database error');
-    }
-    
-})
 // cron-job.org uses this endpoint to keep the render and aiven instances running **DO NOT DELETE**
 app.get('/log', async (req, res) => {
     try {
@@ -53,7 +43,7 @@ app.get('/log', async (req, res) => {
     }
 })
 
-app.get('/notes', async (req, res) => {
+app.get('/', async (req, res) => {
     try {
         const query1 = `SELECT noteID, notes, DATE_FORMAT(dateCreated, '%Y-%m-%d') AS dateCreated,
                         DATE_FORMAT(dateCreated, '%c/%d/%Y') AS dateCreatedFormatted, priority,
@@ -141,7 +131,7 @@ app.post('/add-note', async (req, res) => {
 
         await db.query(query1, [text]);
 
-        res.redirect('/notes');
+        res.redirect('/');
     } catch (error) {
         console.log(error);
         res.status(500).send('Add-note Failed');
@@ -156,7 +146,7 @@ app.post('/update-note', async (req, res) => {
                         WHERE noteID = ?`;
         
         await db.query(query1, [value, id]);
-        res.redirect('/notes');
+        res.redirect('/');
     } catch (error) {
         console.log(error);
         res.status(500).send('Add-note Failed');
@@ -194,7 +184,7 @@ app.post('/update-task', async (req, res) => {
     }
 })
 
-app.post('/notes/delete/:id', async (req, res) => {
+app.post('/delete/:id', async (req, res) => {
     try {
         const noteID = req.params.id;
         console.log('delete button pressed', noteID);
@@ -225,7 +215,7 @@ app.post('/tasks/delete/:id', async (req, res) => {
     }
 })
 
-app.post('/notes/complete/:id', async (req, res) => {
+app.post('/complete/:id', async (req, res) => {
     try {
         const noteID = req.params.id;
         console.log('complete button pressed', noteID);
@@ -235,14 +225,14 @@ app.post('/notes/complete/:id', async (req, res) => {
         
         await db.query(query1, [noteID]);
 
-        res.redirect('/notes');
+        res.redirect('/');
     } catch (error) {
         console.log(error);
         res.status(500).send('Completion failed')
     }
 })
 
-app.post('/notes/priority/:id', async (req, res) => {
+app.post('/priority/:id', async (req, res) => {
     try {
         const noteID = req.params.id;
         console.log('priority button pressed', noteID);
@@ -266,7 +256,7 @@ app.post('/notes/priority/:id', async (req, res) => {
         }
         
 
-        res.redirect('/notes');
+        res.redirect('/');
     } catch (error) {
         console.log(error);
         res.status(500).send('Priority failed')

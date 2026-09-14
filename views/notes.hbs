@@ -35,7 +35,7 @@
                         {{#if priority}}
                         <tr class="priority-row">
                             <td>
-                                <form action="/notes/complete/{{noteID}}" method="POST">
+                                <form action="/complete/{{noteID}}" method="POST">
                                     <button class="completeBtn"></button>
                                 </form>
                             </td>
@@ -46,7 +46,7 @@
                                 </div>
                             </td>
                             <td>
-                                <form action="/notes/priority/{{noteID}}" method="POST">
+                                <form action="/priority/{{noteID}}" method="POST">
                                     <button class="unpriorityBtn"></button>
                                 </form>
                             </td>
@@ -54,7 +54,7 @@
                         {{else}}
                         <tr>
                             <td>
-                                <form action="/notes/complete/{{noteID}}" method="POST">
+                                <form action="/complete/{{noteID}}" method="POST">
                                     <button class="completeBtn"></button>
                                 </form>
                             </td>
@@ -65,7 +65,7 @@
                                 </div>
                             </td>
                             <td>
-                                <form action="/notes/priority/{{noteID}}" method="POST">
+                                <form action="/priority/{{noteID}}" method="POST">
                                     <button class="priorityBtn"></button>
                                     
                                 </form>
