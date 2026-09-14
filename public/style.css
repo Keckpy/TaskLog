@@ -245,6 +245,7 @@ table {
     border-radius: 6px;
     overflow: hidden;
     margin-block-start: 20px;
+    width: 100%;
 }
 
 th {
