@@ -1,5 +1,3 @@
-const historyBtn = document.querySelector('.historyBtn');
-
 document.addEventListener('keydown', (e) => {
     // Press 'n' when on page
     if (e.target.tagName === 'BODY' && e.key === 'n') {
@@ -14,5 +12,10 @@ document.addEventListener('keydown', (e) => {
     // Press 't' when on page
     if (e.target.tagName === 'BODY' && e.key === 't') {
         window.location.href = '/tasks';
+    }
+
+    // Press 's' when on page
+    if (e.target.tagName === 'BODY' && e.key === 's') {
+        window.location.href = '/schedule';
     }
 })

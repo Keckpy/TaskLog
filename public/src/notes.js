@@ -105,6 +105,7 @@ dateVisual.forEach((date) => {
 addItemBtn.addEventListener('click', (e) => {
     e.preventDefault();
     formDisplay.classList.toggle('hidden');
+    addInput.focus();
 })
 
 
@@ -122,6 +123,11 @@ document.addEventListener('keydown', (e) => {
     // Press 't' when on page
     if (e.target.tagName === 'BODY' && e.key === 't') {
         window.location.href = '/tasks';
+    }
+
+    // Press 's' when on page
+    if (e.target.tagName === 'BODY' && e.key === 's') {
+        window.location.href = '/schedule';
     }
 
     // Press 'a' when on page

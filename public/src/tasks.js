@@ -196,6 +196,11 @@ document.addEventListener('keydown', (e) => {
         addTaskInput.focus();
     }
 
+    // Press 's' when on page
+    if (e.target.tagName === 'BODY' && e.key === 's') {
+        window.location.href = '/schedule';
+    }
+
     // Blur task input with 'Escape'
     if (e.target.tagName === 'INPUT' && e.key === 'Escape') {
         addTaskInput.blur();

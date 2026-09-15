@@ -40,7 +40,7 @@ body {
 }
 
 .dataBtn {
-    color: inherit;
+    color: #f9f9f9;
     border: none;
     background-color: #3ecf8e;
     border-radius: 5px;
@@ -312,7 +312,6 @@ a {
     background-color: #3ecf8e;
     display: flex;
     flex-direction: column;
-    gap: 5px;
     padding-block-start: 10px;
     position: sticky;
     top: 0;
@@ -333,7 +332,7 @@ h2 {
 .active {
     background-color: #2eaf76;
 }
-/* Max Age is 38 days 5 bars + 3 squares */
+
 .container {
     width: 50px;
     height: 25px;
@@ -402,3 +401,25 @@ h2 {
     background-color: #2eaf76;
 }
 
+.schedule {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    width: 100%;
+    height: 720px;
+    border: 1px solid #333;
+    border-radius: 5px;
+    transform: translateX(10px);
+}
+
+.narrow {
+    margin-inline: 100px;
+}
+
+.month {
+    border: 1px solid #333;
+}
+
+.dark-text {
+    color: #333;
+}

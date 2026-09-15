@@ -112,6 +112,15 @@ app.get('/tasks', async (req, res) => {
     }
 })
 
+app.get('/schedule', async (req, res) => {
+    try {
+        res.render('schedule') 
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Schedule failed')
+    }
+})
+
 app.get('/test', async (req, res) => {
     try {
 
