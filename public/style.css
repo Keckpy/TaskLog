@@ -373,6 +373,23 @@ h2 {
     border-inline: 1px solid #f9f9f9;
     border-block-start: 1px solid #f9f9f9;
 }
+
+.bottomM {
+    background-color: #807bea;
+    border-inline: 1px solid #f9f9f9;
+    border-block-end: 1px solid #f9f9f9;
+}
+
+.middleM {
+    background-color: #807bea;
+    border-inline: 1px solid #f9f9f9;
+}
+
+.topM {
+    background-color: #807bea;
+    border-inline: 1px solid #f9f9f9;
+    border-block-start: 1px solid #f9f9f9;
+}
 .btn {
     background-color: #3ecf8e;
     margin-block-end: 30px;

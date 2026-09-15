@@ -86,15 +86,17 @@ const bar = [
 let dayCounter = 0;
 let barCounter = 0;
 let weekCounter = 0;
+let daysInMonth = 0;
 btn.addEventListener('click', (e) => {
     e.preventDefault();
     console.log('button clicked!')
     if (dayCounter < 3) {
-        console.log(`Before Day access: Bar ${barCounter} | Day ${dayCounter} | Week ${weekCounter} `)
+        console.log(`Before Day access: Bar ${barCounter} | Days ${daysInMonth} | Week ${weekCounter} `)
         cells[bar[barCounter][dayCounter]].classList.toggle('block');
         dayCounter += 1;
         weekCounter += 1;
-        console.log(`Bar ${barCounter} | Day ${dayCounter} | Week ${weekCounter} `)
+        daysInMonth += 1;
+        console.log(`Bar ${barCounter} | Days ${daysInMonth} | Week ${weekCounter} `)
     } else if (weekCounter === 6) {
         bar[barCounter - 1].forEach((day) => {
             cells[day].classList.toggle('block');
@@ -108,13 +110,34 @@ btn.addEventListener('click', (e) => {
 
         dayCounter = 0;
         weekCounter = 0;
+        daysInMonth += 1;
+    } else if (weekCounter === 3 && daysInMonth === 31) {
+        bar[barCounter].forEach((day) => {
+            cells[day].classList.toggle('block');
+        })
+        for (let i = 1; i < 5; i++) {
+            console.log('This is i', i);
+            cells[bar[barCounter - i][0]].classList.toggle('bottom');
+            cells[bar[barCounter - i][1]].classList.toggle('middle');
+            cells[bar[barCounter - i][2]].classList.toggle('top');
+            if (i === 4) {
+                cells[bar[barCounter - i][0]].classList.toggle('bottomM');
+                cells[bar[barCounter - i][1]].classList.toggle('middleM');
+                cells[bar[barCounter - i][2]].classList.toggle('topM');
+            }
+        }
+        barCounter -= 3;
+        weekCounter = 0;
+        dayCounter = 0;
+        daysInMonth = 0;
     } else {
-        console.log(`Before Week access: Bar ${barCounter} | Day ${dayCounter} | Week ${weekCounter} `)
+        console.log(`Before Week access: Bar ${barCounter} | Days ${daysInMonth} | Week ${weekCounter} `)
         barCounter += 1;
         dayCounter = 0;
         cells[bar[barCounter][dayCounter]].classList.toggle('block');
         dayCounter += 1;
         weekCounter += 1;
-        console.log(`Bar ${barCounter} | Day ${dayCounter} | Week ${weekCounter} `)
+        daysInMonth += 1;
+        console.log(`Bar ${barCounter} | Days ${daysInMonth} | Week ${weekCounter} `)
     }
 })
