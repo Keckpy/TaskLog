@@ -72,11 +72,30 @@ app.get('/dev', async (req, res) => {
                         FROM Notes
                         ORDER BY noteID DESC
                         `;
+        const query2 = `SELECT departmentID, departmentName, DATE_FORMAT(departmentCreated, '%c/%d/%Y') AS departmentCreated
+                        FROM Departments
+                        `;
+        const query3 = `SELECT benchID, benchName, DATE_FORMAT(benchCreated, '%c/%d/%Y') AS benchCreated
+                        FROM Benches
+                        `;
+        const query4 = `SELECT employeeID, firstName, lastName, departmentID, benchID, DATE_FORMAT(employeeCreated, '%c/%d/%Y') AS employeeCreated
+                        FROM Employees
+                        `;
+        const query5 = `SELECT taskID, task
+                        FROM Tasks
+                        `;
 
-        const [dev] = await db.query(query1);
-
+        const [notes] = await db.query(query1);
+        const [departments] = await db.query(query2);
+        const [benches] = await db.query(query3);
+        const [employees] = await db.query(query4);
+        const [tasks] = await db.query(query5)
         res.render('dev', {
-            dev: dev,
+            notes: notes,
+            departments: departments,
+            benches: benches,
+            employees: employees,
+            tasks: tasks
         }) 
     } catch (error) {
         console.log(error);
@@ -166,6 +185,25 @@ app.post('/add-note', async (req, res) => {
         res.status(500).send('Add-note Failed');
     }
 })
+// I need to figure out the best way to insert using my dev table i guess
+// I mean i can just keep them separate and insert that way, inserting into the
+// Employee table would require a bench and department dropdown, now that i am thinking about it
+// It should almost be a multi-select since people can have many benches and departments
+// app.post('/add-employee', async (req, res) => {
+//     try {
+//         const query1 = `INSERT INTO Notes (benchname)
+//                         VALUES (?)`;
+
+//         const text = req.body['add-bench'];
+
+//         await db.query(query1, [text]);
+
+//         res.redirect('/');
+//     } catch (error) {
+//         console.log(error);
+//         res.status(500).send('Add-note Failed');
+//     }
+// })
 
 app.post('/update-note', async (req, res) => {
     try {

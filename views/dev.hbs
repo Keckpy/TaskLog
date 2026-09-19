@@ -7,29 +7,128 @@
 </head>
 <body>
     <section class="notes">
-        {{!-- noteID notes dateCreated dateCreatedFormatted priority dateCompleted  --}}
-        <table>
-            <thead>
-                <th>noteID</th>
-                <th>notes</th>
-                <th>dateCreated</th>
-                <th>dateCreatedFormatted</th>
-                <th>priority</th>
-                <th>dateCompleted</th>
-            </thead>
-            <tbody>
-                {{#each dev}}
-                <tr>
-                    <td>{{noteID}}</td>
-                    <td>{{notes}}</td>
-                    <td>{{dateCreated}}</td>
-                    <td>{{dateCreatedFormatted}}</td>
-                    <td>{{priority}}</td>
-                    <td>{{dateCompleted}}</td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
+        <section class="toggle">
+            <div class="dataBtn active" data-btn="notes">
+                <p>Notes</p>
+            </div>
+            <div class="dataBtn" data-btn="tasks">
+                <p>Tasks</p>
+            </div>
+            <div class="dataBtn" data-btn="departments">
+                <p>Departments</p>
+            </div>
+            <div class="dataBtn" data-btn="benches">
+                <p>Benches</p>
+            </div>    
+            <div class="dataBtn" data-btn="employees">
+                <p>Employees</p>
+            </div>      
+        </section>
+        <section class="tables">
+            <div data-table="notes">
+                <table>
+                    <thead>
+                        <th>noteID</th>
+                        <th>notes</th>
+                        <th>dateCreated</th>
+                        <th>dateCreatedFormatted</th>
+                        <th>priority</th>
+                        <th>dateCompleted</th>
+                    </thead>
+                    <tbody>
+                        {{#each notes}}
+                        <tr>
+                            <td>{{noteID}}</td>
+                            <td>{{notes}}</td>
+                            <td>{{dateCreated}}</td>
+                            <td>{{dateCreatedFormatted}}</td>
+                            <td>{{priority}}</td>
+                            <td>{{dateCompleted}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="hidden" data-table="tasks">
+                <table>
+                    <thead>
+                        <th>taskID</th>
+                        <th>task</th>
+                    </thead>
+                    <tbody>
+                        {{#each tasks}}
+                        <tr>
+                            <td>{{taskID}}</td>
+                            <td>{{task}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="hidden" data-table="departments">
+                <table>
+                    <thead>
+                        <th>departmentID</th>
+                        <th>departmentName</th>
+                        <th>departmentCreated</th>
+                    </thead>
+                    <tbody>
+                        {{#each departments}}
+                        <tr>
+                            <td>{{departmentID}}</td>
+                            <td>{{departmentName}}</td>
+                            <td>{{departmentCreated}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="hidden" data-table="benches">
+                <table>
+                    <thead>
+                        <th>benchID</th>
+                        <th>benchName</th>
+                        <th>benchCreated</th>
+                    </thead>
+                    <tbody>
+                        {{#each benches}}
+                        <tr>
+                            <td>{{benchID}}</td>
+                            <td>{{benchName}}</td>
+                            <td>{{benchCreated}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            <div class="hidden" data-table="employees">
+                <table>
+                    <thead>
+                        <th>employeeID</th>
+                        <th>firstName</th>
+                        <th>lastName</th>
+                        <th>departmentID</th>
+                        <th>benchID</th>
+                        <th>employeeCreated</th>
+                    </thead>
+                    <tbody>
+                        {{#each employees}}
+                        <tr>
+                            <td>{{employeeID}}</td>
+                            <td>{{firstName}}</td>
+                            <td>{{lastName}}</td>
+                            <td>{{departmentID}}</td>
+                            <td>{{benchID}}</td>
+                            <td>{{employeeCreated}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
     </section>
 </body>
 </html>
+
+<script src="/src/dev.js"></script>
