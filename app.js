@@ -64,6 +64,26 @@ app.get('/', async (req, res) => {
     }
 })
 
+app.get('/dev', async (req, res) => {
+    try {
+        const query1 = `SELECT noteID, notes, DATE_FORMAT(dateCreated, '%Y-%m-%d') AS dateCreated,
+                        DATE_FORMAT(dateCreated, '%c/%d/%Y') AS dateCreatedFormatted, priority,
+                        DATE_FORMAT(dateCreated, '%c/%d/%Y') AS dateCompleted
+                        FROM Notes
+                        ORDER BY noteID DESC
+                        `;
+
+        const [dev] = await db.query(query1);
+
+        res.render('dev', {
+            dev: dev,
+        }) 
+    } catch (error) {
+        console.log(error);
+        res.status(500).send('Database failed')
+    }
+})
+
 app.get('/history', async (req, res) => {
     try {
         const query1 = `SELECT noteID, notes, DATE_FORMAT(dateCompleted, '%c/%d/%Y') AS dateCompleted

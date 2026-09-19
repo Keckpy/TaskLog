@@ -70,6 +70,25 @@ body {
     background-color: #2eaf76;
 }
 
+.devBtn {
+    color: inherit;
+    border: none;
+    background-color: #3ecf8e;
+    padding: 10px;
+    font-weight: 900;
+    transition: background-color 0.2 ease;
+    
+}
+
+.devBtn:hover {
+    cursor: pointer;
+    background-color: #2eaf76;
+}
+
+.bottom-btn {
+    margin-block-start: auto;
+}
+
 .tasksBtn {
     color: inherit;
     border: none;

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev</title>
+</head>
+<body>
+    <section class="notes">
+        {{!-- noteID notes dateCreated dateCreatedFormatted priority dateCompleted  --}}
+        <table>
+            <thead>
+                <th>noteID</th>
+                <th>notes</th>
+                <th>dateCreated</th>
+                <th>dateCreatedFormatted</th>
+                <th>priority</th>
+                <th>dateCompleted</th>
+            </thead>
+            <tbody>
+                {{#each dev}}
+                <tr>
+                    <td>{{noteID}}</td>
+                    <td>{{notes}}</td>
+                    <td>{{dateCreated}}</td>
+                    <td>{{dateCreatedFormatted}}</td>
+                    <td>{{priority}}</td>
+                    <td>{{dateCompleted}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </section>
+</body>
+</html>
